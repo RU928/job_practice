@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jsx</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+    <script src="react/build/react.js"></script>
+    <script src="react/build/react-dom.js"></script>
+    <script src="babel/browser.js"></script>
+    <script type="text/babel">
+        var FancyLink = React.createClass({
+            render: function(){
+                switch(this.props.size) {
+                    //sizeに関する処理
+                }
+                var attribs = Object.assign({},this.props);
+                delete attribs.size;
+                return <a {...attribs}>{this.props.children}</a>
+            }
+        });
+
+        ReactDOM.render(
+            <FancyLink
+                href="http://example.org"
+                style={{color: "red"}}
+                target="_blank"
+                size="medium"
+            >
+            HELLOOOOOO
+            </FancyLink>,
+            document.getElementById("app")
+        );
+
+        // ReactDOM.render(
+        //     <h1 id="myheading">
+        //         <span><em>Hell</em>o</span> ryo!
+        //     </h1>,
+        //     document.getElementById('app')
+        // );
+
+    </script>
+</html>
