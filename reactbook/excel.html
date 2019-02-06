@@ -52,10 +52,22 @@
                 return {data: this.props.initialData}
             },
 
+            _sort: function(e){
+                var column = e.target.cellIndex;
+                var data = this.state.data.slice();
+                ///sortの仕組みがよくわからん
+                data.sort(function(a,b){
+                    return a[column] > b[column] ? 1 : -1;
+                });
+                this.setState({
+                    data: data
+                });
+            },
+
             render: function(){
                 return(
                     React.DOM.table({className: 'table'},
-                        React.DOM.thead(null,
+                        React.DOM.thead({onClick: this._sort},
                             React.DOM.tr(null,
                                 this.props.headers.map(function(title,idx){
                                     return React.DOM.th({key: idx},title);
